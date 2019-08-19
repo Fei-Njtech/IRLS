@@ -2,7 +2,7 @@ from numpy import array, diag, dot, maximum, empty, repeat, ones, sum
 from numpy.linalg import inv
 
 def IRLS(y, X, maxiter, w_init = 1, d = 0.0001, tolerance = 0.001):
-	n,p = X.shape
+	n,p = X.shape #Test
 	delta = array( repeat(d, n) ).reshape(1,n)
 	w = repeat(1, n)
 	W = diag( w )
