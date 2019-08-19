@@ -2,12 +2,12 @@ from numpy import array, diag, dot, maximum, empty, repeat, ones, sum
 from numpy.linalg import inv
 
 def IRLS(y, X, maxiter, w_init = 1, d = 0.0001, tolerance = 0.001):
-	n,p = X.shape #Test
-	delta = array( repeat(d, n) ).reshape(1,n)
-	w = repeat(1, n)
-	W = diag( w )
+	n,p = X.shape #n行p列
+	delta = array( repeat(d, n) ).reshape(1,n) #1行n列的0.0001
+	w = repeat(1, n) #1行n列的1
+	W = diag( w ) #单位矩阵
 	B = dot( inv( X.T.dot(W).dot(X) ), 
-			 ( X.T.dot(W).dot(y) ) )
+			 ( X.T.dot(W).dot(y) ) ) #最小二乘法的解
 	for _ in range(maxiter):
 		_B = B
 		_w = abs(y - X.dot(B)).T
